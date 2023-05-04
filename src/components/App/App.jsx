@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { usePokemonData } from "../../hooks/usePokemonData";
+import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
+import { useFilteredPokemon } from "../../hooks/useFilteredPokemon";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import PokemonDetail from "../PokemonDetail/PokemonDetail";
 import Logo from "../Logo/Logo";
-import { usePokemonData } from "../../hooks/usePokemonData";
-import { useFilteredPokemon } from "../../hooks/useFilteredPokemon";
-import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
 import Loading from "../Loading/Loading";
+import SearchInput from "../SearchInput/SearchInput";
 import "./App.css";
 
 /*
@@ -38,12 +39,9 @@ function App() {
         <Loading />
       ) : (
         <div>
-          <input
-            className="search-pokedex"
-            type="text"
-            placeholder="Search by name, type, or ID"
-            value={searchTerm}
-            onChange={handleSearchChange}
+          <SearchInput
+            searchTerm={searchTerm}
+            onSearchChange={handleSearchChange}
           />
           <div className="pokemon-card-list">
             {filteredPokemonList.length > 0 ? (

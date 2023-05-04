@@ -39,9 +39,9 @@ async function getPokemonDetails(url) {
 }
 
 /*
-  This function returns a list of the first 151 Pokemon.
+  This function returns a list of all the Pokemon.
 */
-async function getAllPokemon() {
+export async function getAllPokemon() {
   const cacheKey = "allPokemon";
   const cachedData = getCachedData(cacheKey);
 

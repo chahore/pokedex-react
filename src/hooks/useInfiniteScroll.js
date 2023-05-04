@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 /*
  * Custom hook for infinite scrolling
  */
-function useInfiniteScroll(searchTerm) {
+export function useInfiniteScroll(searchTerm) {
   const [numPokemonRendered, setNumPokemonRendered] = useState(30);
 
   useEffect(() => {
@@ -30,5 +30,3 @@ function useInfiniteScroll(searchTerm) {
 
   return [numPokemonRendered];
 }
-
-export default useInfiniteScroll;

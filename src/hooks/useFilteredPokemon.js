@@ -1,7 +1,7 @@
 /*
  * Custom hook for filtering the pokemon list
  */
-function useFilteredPokemon(searchTerm, pokemonList) {
+export function useFilteredPokemon(searchTerm, pokemonList) {
   const matchesSearchTerm = (searchValue, pokemon) => {
     return (
       pokemon.name.toLowerCase().includes(searchValue) ||
@@ -18,5 +18,3 @@ function useFilteredPokemon(searchTerm, pokemonList) {
 
   return filteredPokemonList;
 }
-
-export default useFilteredPokemon;

@@ -4,7 +4,7 @@ import { getAllPokemon } from "../api/pokemonApi";
 /*
  * Custom hook for fetching Pokemon data
  */
-function usePokemonData() {
+export function usePokemonData() {
   const [pokemonList, setPokemonList] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -17,5 +17,3 @@ function usePokemonData() {
 
   return [pokemonList, loading];
 }
-
-export default usePokemonData;

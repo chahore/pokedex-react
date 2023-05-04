@@ -3,15 +3,3 @@
   margin: 0 auto;
   text-align: center;
 }
-
-.search-pokedex {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 14px;
-  font-weight: 700;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
