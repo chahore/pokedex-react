@@ -48,7 +48,9 @@ async function getAllPokemon() {
   if (cachedData) {
     return cachedData;
   } else {
-    const data = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=151");
+    const data = await fetchData(
+      "https://pokeapi.co/api/v2/pokemon?limit=1008"
+    );
     const detailedData = await Promise.all(
       data.map((pokemon) => getPokemonDetails(pokemon.url))
     );

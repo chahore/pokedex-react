@@ -41,6 +41,32 @@ function App() {
       )
     : pokemonList;
 
+  const [numPokemonRendered, setNumPokemonRendered] = useState(30);
+
+  useEffect(() => {
+    setNumPokemonRendered(30);
+  }, [searchTerm]);
+
+  const pokemonToRender = filteredPokemonList.slice(0, numPokemonRendered);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight
+      ) {
+        setNumPokemonRendered(
+          (prevNumPokemonRendered) => prevNumPokemonRendered + 30
+        );
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [numPokemonRendered]);
+
   return (
     <>
       <Logo />
@@ -57,7 +83,7 @@ function App() {
           />
           <div className="pokemon-card-list">
             {filteredPokemonList.length > 0 ? (
-              filteredPokemonList.map((pokemon) => (
+              pokemonToRender.map((pokemon) => (
                 <PokemonCard
                   key={pokemon.id}
                   pokemon={pokemon}
