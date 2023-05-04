@@ -1,5 +1,5 @@
 function PokemonDetail() {
-  return <div>PokemonDetail</div>;
+  return <div>{console.log("clicked")}</div>;
 }
 
 export default PokemonDetail;

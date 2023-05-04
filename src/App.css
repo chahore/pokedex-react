@@ -4,19 +4,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-.pokemon-card {
-  text-transform: capitalize;
-  display: inline-block;
-  width: 300px;
-  margin: 1rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.pokemon-card img {
-  width: 200px;
-  height: 200px;
-}

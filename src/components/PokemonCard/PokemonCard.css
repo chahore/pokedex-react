@@ -1,0 +1,109 @@
+.pokemon-card {
+  text-transform: capitalize;
+  display: inline-block;
+  width: 300px;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.pokemon-card:hover {
+  background-color: #292929;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.pokemon-card img {
+  width: 200px;
+  height: 200px;
+}
+
+.type {
+  text-transform: uppercase;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  background-color: var(--type-color);
+  display: inline-block;
+  width: 65px;
+}
+
+.fire {
+  --type-color: #f08030;
+}
+
+.water {
+  --type-color: #6890f0;
+}
+
+.grass {
+  --type-color: #78c850;
+}
+
+.poison {
+  --type-color: #a040a0;
+}
+
+.flying {
+  --type-color: #a890f0;
+}
+
+.bug {
+  --type-color: #a8b820;
+}
+
+.normal {
+  --type-color: #a8a878;
+}
+
+.ground {
+  --type-color: #e0c068;
+}
+
+.fairy {
+  --type-color: #ee99ac;
+}
+
+.fighting {
+  --type-color: #c03028;
+}
+
+.psychic {
+  --type-color: #f85888;
+}
+
+.rock {
+  --type-color: #b8a038;
+}
+
+.ghost {
+  --type-color: #705898;
+}
+
+.ice {
+  --type-color: #98d8d8;
+}
+
+.electric {
+  --type-color: #f8d030;
+}
+
+.dragon {
+  --type-color: #7038f8;
+}
+
+.steel {
+  --type-color: #b8b8d0;
+}
+
+.dark {
+  --type-color: #705848;
+}
+
+.shadow {
+  --type-color: #5a5a5a;
+}
