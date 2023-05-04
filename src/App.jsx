@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import PokemonCard from "./components/PokemonCard/PokemonCard";
 import PokemonDetail from "./components/PokemonDetail/PokemonDetail";
+import Logo from "./components/Logo/Logo";
 import getAllPokemon from "./api";
-import spinningPokeball from "./assets/pokeball.svg";
+import Loading from "./components/Loading/Loading";
 import "./App.css";
 
 function App() {
@@ -23,19 +24,9 @@ function App() {
 
   return (
     <>
-      <h1>
-        <img
-          src="https://i.imgur.com/WJj4ugt.png"
-          alt="Pokédex"
-          className="logo"
-        />
-      </h1>
+      <Logo />
       {loading ? (
-        <img
-          src={spinningPokeball}
-          alt="Loading..."
-          className="pokeball-loading"
-        />
+        <Loading />
       ) : (
         <div className="pokemon-card-list">
           {pokemonList.map((pokemon) => (
