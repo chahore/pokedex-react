@@ -1,16 +1,25 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PokemonCard from "./components/PokemonCard/PokemonCard";
 import PokemonDetail from "./components/PokemonDetail/PokemonDetail";
 import Logo from "./components/Logo/Logo";
-import getAllPokemon from "./api";
-import Loading from "./components/Loading/Loading";
+import { usePokemonData } from "./hooks/usePokemonData.js";
+import { useFilteredPokemon } from "./hooks/useFilteredPokemon";
+import { useInfiniteScroll } from "./hooks/useInfiniteScroll";
+import Loading from "../Loading/Loading";
 import "./App.css";
 
+/*
+ * The App component is the root component of our application. It is responsible
+ * for fetching the data from the API and passing it down to the child components.
+ * It is also responsible for handling the search term and passing it down to the
+ * child components.
+ */
 function App() {
-  const [pokemonList, setPokemonList] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [pokemonList, loading] = usePokemonData();
+  const filteredPokemonList = useFilteredPokemon(searchTerm, pokemonList);
+  const [numPokemonRendered] = useInfiniteScroll(searchTerm);
 
   const handlePokemonClick = (pokemon) => {
     setSelectedPokemon(pokemon);
@@ -20,52 +29,7 @@ function App() {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    getAllPokemon().then((data) => {
-      setPokemonList(data);
-      setLoading(false);
-    });
-  }, []);
-
-  const matchesSearchTerm = (searchValue, pokemon) => {
-    return (
-      pokemon.name.toLowerCase().includes(searchValue) ||
-      pokemon.id.toString().includes(searchValue) ||
-      pokemon.types.some((type) => type.toLowerCase().includes(searchValue))
-    );
-  };
-
-  const filteredPokemonList = searchTerm.trim()
-    ? pokemonList.filter((pokemon) =>
-        matchesSearchTerm(searchTerm.toLowerCase(), pokemon)
-      )
-    : pokemonList;
-
-  const [numPokemonRendered, setNumPokemonRendered] = useState(30);
-
-  useEffect(() => {
-    setNumPokemonRendered(30);
-  }, [searchTerm]);
-
   const pokemonToRender = filteredPokemonList.slice(0, numPokemonRendered);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight
-      ) {
-        setNumPokemonRendered(
-          (prevNumPokemonRendered) => prevNumPokemonRendered + 30
-        );
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [numPokemonRendered]);
 
   return (
     <>
