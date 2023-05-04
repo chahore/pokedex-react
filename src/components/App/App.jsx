@@ -1,10 +1,10 @@
 import { useState } from "react";
-import PokemonCard from "./components/PokemonCard/PokemonCard";
-import PokemonDetail from "./components/PokemonDetail/PokemonDetail";
-import Logo from "./components/Logo/Logo";
-import { usePokemonData } from "./hooks/usePokemonData.js";
-import { useFilteredPokemon } from "./hooks/useFilteredPokemon";
-import { useInfiniteScroll } from "./hooks/useInfiniteScroll";
+import PokemonCard from "../PokemonCard/PokemonCard";
+import PokemonDetail from "../PokemonDetail/PokemonDetail";
+import Logo from "../Logo/Logo";
+import { usePokemonData } from "../../hooks/usePokemonData";
+import { useFilteredPokemon } from "../../hooks/useFilteredPokemon";
+import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
 import Loading from "../Loading/Loading";
 import "./App.css";
 
