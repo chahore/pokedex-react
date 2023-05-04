@@ -24,7 +24,11 @@ function App() {
   return (
     <>
       <h1>
-        <img src="https://i.imgur.com/WJj4ugt.png" alt="Pokedex" />
+        <img
+          src="https://i.imgur.com/WJj4ugt.png"
+          alt="Pokédex"
+          className="logo"
+        />
       </h1>
       {loading ? (
         <img

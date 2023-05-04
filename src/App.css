@@ -19,3 +19,8 @@
   background-size: cover;
   animation: spin 1s linear infinite;
 }
+
+.logo {
+  width: 300px;
+  margin: 0 auto;
+}
