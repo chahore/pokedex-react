@@ -1,17 +1,36 @@
+import { useEffect, useState } from "react";
 import PokemonCard from "./components/PokemonCard";
 import PokemonDetail from "./components/PokemonDetail";
 import getAllPokemon from "./api";
-
 import "./App.css";
 
-getAllPokemon();
-
 function App() {
+  const [pokemonList, setPokemonList] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+
+  const handlePokemonClick = (pokemon) => {
+    setSelectedPokemon(pokemon);
+  };
+
+  useEffect(() => {
+    getAllPokemon().then((data) => {
+      setPokemonList(data);
+    });
+  });
+
   return (
     <>
       <h1>Pokedex</h1>
-      <PokemonCard />
-      <PokemonDetail />
+      <div className="pokemon-card-list">
+        {pokemonList.map((pokemon) => (
+          <PokemonCard
+            key={pokemon.id}
+            pokemon={pokemon}
+            onClick={handlePokemonClick}
+          />
+        ))}
+      </div>
+      {selectedPokemon && <PokemonDetail pokemon={selectedPokemon} />}
     </>
   );
 }
