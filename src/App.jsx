@@ -49,6 +49,7 @@ function App() {
       ) : (
         <div>
           <input
+            className="search-pokedex"
             type="text"
             placeholder="Search by name, type, or ID"
             value={searchTerm}

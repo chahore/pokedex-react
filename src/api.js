@@ -39,7 +39,7 @@ async function getPokemonDetails(url) {
 }
 
 /*
-  This function returns a list of the first 386 Pokemon.
+  This function returns a list of the first 151 Pokemon.
 */
 async function getAllPokemon() {
   const cacheKey = "allPokemon";
@@ -48,7 +48,7 @@ async function getAllPokemon() {
   if (cachedData) {
     return cachedData;
   } else {
-    const data = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=386");
+    const data = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=151");
     const detailedData = await Promise.all(
       data.map((pokemon) => getPokemonDetails(pokemon.url))
     );
