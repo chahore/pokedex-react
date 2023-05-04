@@ -21,7 +21,25 @@ async function fetchData(url) {
 }
 
 /*
-  This function takes a URL and returns the data from that URL.
+  This function gets the details of a single Pokemon.
+*/
+async function getPokemonDetails(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return {
+    id: data.id,
+    name: data.name,
+    imageUrl: data.sprites.other["official-artwork"].front_default,
+    types: data.types.map((type) => type.type.name),
+    stats: data.stats.map((stat) => ({
+      name: stat.stat.name,
+      value: stat.base_stat,
+    })),
+  };
+}
+
+/*
+  This function returns a list of the first 386 Pokemon.
 */
 async function getAllPokemon() {
   const cacheKey = "allPokemon";
@@ -31,8 +49,11 @@ async function getAllPokemon() {
     return cachedData;
   } else {
     const data = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=386");
-    setCachedData(cacheKey, data);
-    return data;
+    const detailedData = await Promise.all(
+      data.map((pokemon) => getPokemonDetails(pokemon.url))
+    );
+    setCachedData(cacheKey, detailedData);
+    return detailedData;
   }
 }
 
