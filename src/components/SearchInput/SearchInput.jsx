@@ -1,3 +1,5 @@
+import "./SearchInput.css";
+
 function SearchInput({ searchTerm, onSearchChange }) {
   return (
     <input
