@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <img src="./assets/pokedex-logo.png" alt="Pokedex"></img>
+      <h1>Pokédex</h1>
       <div className="pokemon-card-list">
         {pokemonList.map((pokemon) => (
           <PokemonCard
