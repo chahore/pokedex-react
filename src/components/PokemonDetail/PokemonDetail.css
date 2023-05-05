@@ -1,0 +1,23 @@
+.ReactModal__Overlay {
+  transition: opacity 200ms ease-in-out;
+}
+
+.pokemon-detail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #202020;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid #272727;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(36, 36, 36, 0.5);
+}
