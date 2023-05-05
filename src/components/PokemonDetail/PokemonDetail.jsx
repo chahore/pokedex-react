@@ -20,9 +20,33 @@ function PokemonDetail({ pokemon }) {
       className="pokemon-detail"
       overlayClassName="Overlay"
     >
-      <h2>{pokemon.name}</h2>
+      <h1>
+        #{pokemon.id} - {pokemon.name}
+      </h1>
+      <div className="pokemon-types">
+        {pokemon.types.map((type, index) => (
+          <span key={index} className={`type ${type}`}>
+            {type}
+          </span>
+        ))}
+      </div>
       <img src={pokemon.imageUrl} alt={pokemon.name} />
-      <p>{pokemon.description}</p>
+      <div className="pokemon-stats">
+        <ul>
+          {pokemon.stats.map((stat, index) => (
+            <li key={index}>
+              <span className="stat-text">
+                {stat.name}: {stat.value}
+              </span>
+              <div
+                className={`${stat.name}-bar stat-bar`}
+                style={{ width: `${stat.value / 1}px` }}
+              ></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <button onClick={closeModal}>Close</button>
     </Modal>
   );
