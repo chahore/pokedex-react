@@ -30,6 +30,10 @@ function App() {
     setSearchTerm(event.target.value);
   };
 
+  const handleClosePokemonDetail = () => {
+    setSelectedPokemon(null);
+  };
+
   const pokemonToRender = filteredPokemonList.slice(0, numPokemonRendered);
 
   return (
@@ -58,7 +62,12 @@ function App() {
           </div>
         </div>
       )}
-      {selectedPokemon && <PokemonDetail pokemon={selectedPokemon} />}
+      {selectedPokemon && (
+        <PokemonDetail
+          pokemon={selectedPokemon}
+          onClose={handleClosePokemonDetail}
+        />
+      )}
     </>
   );
 }

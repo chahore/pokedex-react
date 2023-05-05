@@ -2,11 +2,14 @@ import Modal from "react-modal";
 import { useState, useEffect } from "react";
 import "./PokemonDetail.css";
 
-function PokemonDetail({ pokemon }) {
+function PokemonDetail({ pokemon, onClose }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
     setIsOpen(false);
+    if (onClose) {
+      onClose();
+    }
   };
 
   useEffect(() => {
