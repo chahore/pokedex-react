@@ -13,7 +13,7 @@
   border-radius: 5px;
   border: 2px solid #272727;
   width: 80%;
-  height: 93%;
+  height: 75%;
   max-width: 600px;
   max-height: 800px;
   display: flex;
@@ -25,8 +25,10 @@
 
 .pokemon-detail img {
   width: 100%;
-  max-width: 350px;
+  max-width: 300px;
   height: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .Overlay {
@@ -39,9 +41,17 @@
 }
 
 @media (max-width: 768px) {
+  .pokemon-detail h1 {
+    font-size: 2rem;
+  }
   .pokemon-stats {
     margin-top: -20px;
     margin-bottom: 10px;
+  }
+  .pokemon-detail img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
   }
 }
 
@@ -49,7 +59,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .pokemon-stats ul {
