@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { usePokemonData } from "../../hooks/usePokemonData";
-import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
-import { useFilteredPokemon } from "../../hooks/useFilteredPokemon";
-import PokemonCard from "../PokemonCard/PokemonCard";
-import PokemonDetail from "../PokemonDetail/PokemonDetail";
-import Logo from "../Logo/Logo";
-import Loading from "../Loading/Loading";
-import SearchInput from "../SearchInput/SearchInput";
+import { usePokemonData } from "./hooks/usePokemonData";
+import { useInfiniteScroll } from "./hooks/useInfiniteScroll";
+import { useFilteredPokemon } from "./hooks/useFilteredPokemon";
+import PokemonCard from "./components/PokemonCard/PokemonCard";
+import PokemonDetail from "./components/PokemonDetail/PokemonDetail";
+import Logo from "./components/Logo/Logo";
+import Loading from "./components/Loading/Loading";
+import SearchInput from "./components/SearchInput/SearchInput";
 import "./App.css";
 
 /*
