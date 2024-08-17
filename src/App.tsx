@@ -8,6 +8,7 @@ import Logo from "./components/Logo/Logo";
 import Loading from "./components/Loading/Loading";
 import SearchInput from "./components/SearchInput/SearchInput";
 import "./App.css";
+import { Pokemon } from "./types";
 
 /*
  * The App component is the root component of our application. It is responsible
@@ -17,16 +18,18 @@ import "./App.css";
  */
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [selectedPokemon, setSelectedPokemon] = useState(
+    null as Pokemon | null
+  );
   const [pokemonList, loading] = usePokemonData();
   const filteredPokemonList = useFilteredPokemon(searchTerm, pokemonList);
   const [numPokemonRendered] = useInfiniteScroll(searchTerm);
 
-  const handlePokemonClick = (pokemon) => {
+  const handlePokemonClick = (pokemon: Pokemon) => {
     setSelectedPokemon(pokemon);
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
@@ -49,7 +52,7 @@ function App() {
           />
           <div className="pokemon-card-list">
             {filteredPokemonList.length > 0 ? (
-              pokemonToRender.map((pokemon) => (
+              pokemonToRender.map((pokemon: Pokemon) => (
                 <PokemonCard
                   key={pokemon.id}
                   pokemon={pokemon}

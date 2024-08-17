@@ -1,13 +1,10 @@
 import "./Logo.css";
+import pokedex from "../../assets/pokedex.png";
 
 function Logo() {
   return (
     <nav>
-      <img
-        src="https://i.imgur.com/WJj4ugt.png"
-        alt="Pokédex"
-        className="logo"
-      />
+      <img src={pokedex} alt="Pokédex" className="logo" />
     </nav>
   );
 }
