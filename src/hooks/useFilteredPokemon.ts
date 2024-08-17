@@ -8,9 +8,7 @@ export function useFilteredPokemon(searchTerm: string, pokemonList: Pokemon[]) {
     return (
       pokemon.name.toLowerCase().includes(searchValue) ||
       pokemon.id.toString().includes(searchValue) ||
-      pokemon.types.some((type) =>
-        type.type.name.toLowerCase().includes(searchValue)
-      )
+      pokemon.types.some((type) => type.toLowerCase().includes(searchValue))
     );
   };
 
