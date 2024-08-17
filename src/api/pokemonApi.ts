@@ -1,4 +1,4 @@
-import { Pokemon, Stat, Type } from "../types";
+import { Pokemon, PokemonFetchResponse } from "../types";
 
 /*
   This file contains all the functions that interact with the PokeAPI.
@@ -26,18 +26,20 @@ async function fetchData(url: string) {
 /*
   This function gets the details of a single Pokemon.
 */
-async function getPokemonDetails(url: string) {
+async function getPokemonDetails(url: string): Promise<Pokemon> {
   const response = await fetch(url);
-  const data = await response.json();
+  const data: PokemonFetchResponse = await response.json();
+
   return {
     id: data.id,
     name: data.name,
     imageUrl: data.sprites.other["official-artwork"].front_default,
-    types: data.types.map((type: Type) => type.type.name),
-    stats: data.stats.map((stat: Stat) => ({
+    types: data.types.map((type) => type.type.name), // Transforming type names to strings
+    stats: data.stats.map((stat) => ({
       name: stat.stat.name,
       value: stat.base_stat,
     })),
+    url,
   };
 }
 
