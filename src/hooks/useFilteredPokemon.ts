@@ -1,12 +1,16 @@
+import { Pokemon } from "../types";
+
 /*
  * Custom hook for filtering the pokemon list
  */
-export function useFilteredPokemon(searchTerm, pokemonList) {
-  const matchesSearchTerm = (searchValue, pokemon) => {
+export function useFilteredPokemon(searchTerm: string, pokemonList: Pokemon[]) {
+  const matchesSearchTerm = (searchValue: string, pokemon: Pokemon) => {
     return (
       pokemon.name.toLowerCase().includes(searchValue) ||
       pokemon.id.toString().includes(searchValue) ||
-      pokemon.types.some((type) => type.toLowerCase().includes(searchValue))
+      pokemon.types.some((type) =>
+        type.type.name.toLowerCase().includes(searchValue)
+      )
     );
   };
 

@@ -2,11 +2,20 @@ export type Pokemon = {
   id: number;
   name: string;
   imageUrl: string;
-  types: string[];
+  types: Type[];
   stats: Stat[];
+  url: string;
 };
 
-type Stat = {
-  name: string;
-  value: number;
+export type Stat = {
+  stat: {
+    name: string;
+  };
+  base_stat: number;
+};
+
+export type Type = {
+  type: {
+    name: string;
+  };
 };

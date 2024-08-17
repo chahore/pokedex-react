@@ -1,20 +1,23 @@
+import { Pokemon, Stat, Type } from "../types";
+
 /*
   This file contains all the functions that interact with the PokeAPI.
 */
-function getCachedData(cacheKey) {
-  return JSON.parse(localStorage.getItem(cacheKey));
+function getCachedData(cacheKey: string) {
+  const cachedItem = localStorage.getItem(cacheKey);
+  return cachedItem ? JSON.parse(cachedItem) : null;
 }
 /*
   This function takes a cache key and data and stores it in local storage.
 */
-function setCachedData(cacheKey, data) {
+function setCachedData(cacheKey: string, data: Pokemon[]) {
   localStorage.setItem(cacheKey, JSON.stringify(data));
 }
 
 /*
   This function takes a URL and returns the data from that URL.
 */
-async function fetchData(url) {
+async function fetchData(url: string) {
   const response = await fetch(url);
   const data = await response.json();
   return data.results;
@@ -23,15 +26,15 @@ async function fetchData(url) {
 /*
   This function gets the details of a single Pokemon.
 */
-async function getPokemonDetails(url) {
+async function getPokemonDetails(url: string) {
   const response = await fetch(url);
   const data = await response.json();
   return {
     id: data.id,
     name: data.name,
     imageUrl: data.sprites.other["official-artwork"].front_default,
-    types: data.types.map((type) => type.type.name),
-    stats: data.stats.map((stat) => ({
+    types: data.types.map((type: Type) => type.type.name),
+    stats: data.stats.map((stat: Stat) => ({
       name: stat.stat.name,
       value: stat.base_stat,
     })),
@@ -52,7 +55,7 @@ export async function getAllPokemon() {
       "https://pokeapi.co/api/v2/pokemon?limit=1008"
     );
     const detailedData = await Promise.all(
-      data.map((pokemon) => getPokemonDetails(pokemon.url))
+      data.map((pokemon: Pokemon) => getPokemonDetails(pokemon.url))
     );
     setCachedData(cacheKey, detailedData);
     return detailedData;

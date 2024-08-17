@@ -1,6 +1,7 @@
+import { Pokemon } from "../../types";
 import "./PokemonCard.css";
 
-function PokemonCard({ pokemon, onClick }) {
+function PokemonCard(pokemon: Pokemon, onClick: (pokemon: Pokemon) => void) {
   return (
     <div className="pokemon-card" onClick={() => onClick(pokemon)}>
       <h2>
@@ -12,7 +13,7 @@ function PokemonCard({ pokemon, onClick }) {
       <div className="pokemon-types">
         {pokemon.types.map((type, index) => (
           <span key={index} className={`type ${type}`}>
-            {type}
+            {type.type.name}
           </span>
         ))}
       </div>

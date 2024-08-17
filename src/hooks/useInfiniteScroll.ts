@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 /*
  * Custom hook for infinite scrolling
  */
-export function useInfiniteScroll(searchTerm) {
+export function useInfiniteScroll(searchTerm: string) {
   const [numPokemonRendered, setNumPokemonRendered] = useState(30);
 
   useEffect(() => {
