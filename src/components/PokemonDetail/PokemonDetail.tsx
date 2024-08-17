@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import "./PokemonDetail.css";
 import { Pokemon } from "../../types";
 
-function PokemonDetail(pokemon: Pokemon, onClose: () => void) {
+interface PokemonDetailProps {
+  pokemon: Pokemon;
+  onClose: () => void;
+}
+
+function PokemonDetail({ pokemon, onClose }: PokemonDetailProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -30,7 +35,7 @@ function PokemonDetail(pokemon: Pokemon, onClose: () => void) {
       <div className="pokemon-types">
         {pokemon.types.map((type, index) => (
           <span key={index} className={`type ${type}`}>
-            {type.type.name}
+            {type}
           </span>
         ))}
       </div>
@@ -40,11 +45,11 @@ function PokemonDetail(pokemon: Pokemon, onClose: () => void) {
           {pokemon.stats.map((stat, index) => (
             <li key={index}>
               <span className="stat-text">
-                {stat.stat.name}: {stat.base_stat}
+                {stat.name}: {stat.value}
               </span>
               <div
-                className={`${stat.stat.name}-bar stat-bar`}
-                style={{ width: `${stat.base_stat / 1}px` }}
+                className={`${stat.name}-bar stat-bar`}
+                style={{ width: `${stat.value / 1}px` }}
               ></div>
             </li>
           ))}

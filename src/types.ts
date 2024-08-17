@@ -8,14 +8,8 @@ export type Pokemon = {
 };
 
 export type Stat = {
-  stat: {
-    name: string;
-  };
-  base_stat: number;
+  name: string;
+  value: number;
 };
 
-export type Type = {
-  type: {
-    name: string;
-  };
-};
+export type Type = string;

@@ -21,7 +21,7 @@ function App() {
   const [selectedPokemon, setSelectedPokemon] = useState(
     null as Pokemon | null
   );
-  const [pokemonList, loading] = usePokemonData();
+  const [pokemonList, loading] = usePokemonData() as [Pokemon[], boolean];
   const filteredPokemonList = useFilteredPokemon(searchTerm, pokemonList);
   const [numPokemonRendered] = useInfiniteScroll(searchTerm);
 

@@ -1,9 +1,11 @@
 import "./SearchInput.css";
 
-function SearchInput(
-  searchTerm: string,
-  onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-) {
+interface SearchInputProps {
+  searchTerm: string;
+  onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function SearchInput({ searchTerm, onSearchChange }: SearchInputProps) {
   return (
     <input
       className="search-pokedex"
